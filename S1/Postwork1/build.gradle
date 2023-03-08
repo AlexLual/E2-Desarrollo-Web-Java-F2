@@ -1,0 +1,10 @@
+buildscript {
+    repositories {
+        gradlePluginPortal()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'org.kordamp.gradle:markdown-gradle-plugin:2.2.0'
+    }
+}
+apply plugin: 'org.kordamp.gradle.markdown'
