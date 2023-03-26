@@ -61,7 +61,7 @@
         <thead class="thead-dark">
         <tr>
             <th scope="col">Nombre</th>
-            <th scope="col">Telefono</th>
+            <th scope="col">Teléfono</th>
             <th scope="col">Acciones</th>
         </tr>
         <tbody>
@@ -69,7 +69,11 @@
             <tr th:each="registro : ${listaPersonas}">
                 <td th:text="${ registro.getNombre()}"></td>
                 <td th:text="${ registro.getTelefono()}"></td>
-                <td ><a th:href="@{/personas/{id}(id=${registro.id})}" class="btn btn-danger" >Eliminar</a></td>
+                <td >
+                    <div class="center-this">
+                    <a th:href="@{/personas/{id}(id=${registro.id})}" class="btn btn-danger" >Eliminar</a>
+                    </div>
+                </td>
             </tr>
         </ul>
         </tbody>
