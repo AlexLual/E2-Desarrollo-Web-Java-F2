@@ -2,7 +2,7 @@ package org.bedu.bacend.java.PostWork6.controller;
 
 
 
-import jakarta.validation.Valid;
+import javax.validation.Valid;
 import org.bedu.bacend.java.PostWork6.model.Persona;
 import org.bedu.bacend.java.PostWork6.service.AgendaService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -7,10 +7,13 @@ import org.bedu.java.backend.ProyectoFinal.service.PersonaServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import javax.validation.Valid;
 
 @Controller
 public class PersonaController {
@@ -29,10 +32,17 @@ public class PersonaController {
         modelo.addAttribute("persona", persona);
         return "crear_persona";
     }
-@PostMapping("/personas")
-    public String guardarPersona(@ModelAttribute("persona") Persona persona){
+    @PostMapping("/personas")
+    public String guardarPersona(@Valid Persona persona, Errors errors){
+    String vistaResultado = "redirect:/personas";
+    if(errors.hasErrors()){
+        System.out.println("error!!");
+        vistaResultado = "redirect:/personas/nuevo";
+        return vistaResultado;
+    }
+        System.out.println("Sin error!!");
     service.guardarPersona(persona);
-    return "redirect:/personas";
+    return vistaResultado;
     }
 
 @GetMapping("/personas/editar/{id}")

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <title>Registro</title>
+
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+          integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
+          crossorigin="anonymous">
+    <style>
+        .center {
+          margin: auto;
+          width: 50%;
+          padding: 10px;
+        }
+        .center-this{
+        margin-left: auto;
+        margin-right: auto;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <a class="navbar-brand" href="#">Contactos</a>
+</nav>
+<br>
+<div class="container">
+    <div class="row">
+        <div class=" col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+            <h2 class="text-center">Introduce un nuevo registro</h2>
+            <div class="card-body center">
+                <form th:action="@{/registro}" th:object="${persona}" method="post">
+                    <br>
+
+                    <div class="form-group center-This">
+                        <label for="nombre">Nombre: </label>
+                        <input id="nombre" class="form-control" type="text" th:field="*{nombre}">
+                        <div th:if="${#fields.hasErrors('nombre')}" th:errorclass="error" th:errors="*{nombre}"></div>
+                    </div>
+                    <br>
+
+                    <div class="form-group center-this">
+                        <label for="telefono">Telefono: </label>
+                        <input id="telefono" class="form-control"  type="text" th:field="*{telefono}">
+                        <div th:if="${#fields.hasErrors('telefono')}" th:errorclass="error" th:errors="*{telefono}"></div>
+                    </div>
+                    <div class="center">
+                        <input class="btn btn-success" type="submit" th:value="Guardar"/>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<h3 class="text-center">Agenda: </h3>
+
+<div class="center">
+    <table class="table table-striped table-bordered table-hover">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Telefono</th>
+            <th scope="col">Acciones</th>
+        </tr>
+        <tbody>
+        <ul>
+            <tr th:each="registro : ${listaPersonas}">
+                <td th:text="${ registro.getNombre()}"></td>
+                <td th:text="${ registro.getTelefono()}"></td>
+                <td ><a th:href="@{/personas/{id}(id=${registro.id})}" class="btn btn-danger" >Eliminar</a></td>
+            </tr>
+        </ul>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

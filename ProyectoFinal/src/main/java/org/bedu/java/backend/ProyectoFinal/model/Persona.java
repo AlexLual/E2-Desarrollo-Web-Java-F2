@@ -1,6 +1,6 @@
 package org.bedu.java.backend.ProyectoFinal.model;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
@@ -12,7 +12,7 @@ public class Persona {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-     @NotBlank(message = "El nombre de la persona es un campo obligatorio.")
+    @NotBlank(message = "El nombre de la persona es un campo obligatorio.")
     @Column(name="nombre", nullable = false,length = 36)
     private String nombre;
     @NotBlank(message = "El nombre de la persona es un campo obligatorio.")

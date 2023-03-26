@@ -28,6 +28,7 @@
           <div class="form-group">
             <label> Nombre :</label>
             <input type="text" name="nombre" th:field="*{nombre}" class="form-control" placeholder="Escribe el nombre :"  >
+            <div class="alert alert-warning" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
           </div>
           <br>
           <div class="form-group">
